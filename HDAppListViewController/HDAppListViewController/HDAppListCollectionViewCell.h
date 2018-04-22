@@ -24,6 +24,16 @@
 @property (strong,nonatomic) UIColor *titleColor;
 ///标题字体大小，默认为14
 @property (assign,nonatomic) float titleFontSize;
+///标题字体大小，默认为14
+@property (assign,nonatomic) float installTitleFontSize;
+///没安装的显示文字颜色，默认为红色
+@property (strong, nonatomic) UIColor *uninstallTitleColor;
+///未安装的显示文字，默认为未安装
+@property (copy, nonatomic) NSString * uninstallTipString;
+///安装过的显示文字颜色，默认为绿色
+@property (strong, nonatomic) UIColor *installTitleColor;
+///安装过的显示文字，默认为已安装
+@property (copy, nonatomic) NSString * installTipString;
 
 - (void)createUIWithItem:(HDAppListItem *)applistItem;
 @end

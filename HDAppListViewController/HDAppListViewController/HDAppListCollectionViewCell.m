@@ -14,6 +14,8 @@
 @property (strong, nonatomic) UIView *m_verticalLine;
 @property (strong, nonatomic) UIView *m_horizontalLine;
 @property (strong, nonatomic) UIView *m_topLine;
+@property (strong, nonatomic) UILabel *m_schemeLabel;
+@property (strong, nonatomic)HDAppListItem *m_appListItem;
 @end
 
 
@@ -32,6 +34,12 @@
         self.m_titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:self.m_titleLabel];
         
+        self.m_schemeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.m_imageView.frame.origin.y + _iconImageWidth, frame.size.width, frame.size.height - _iconImageWidth)];
+        [self.m_schemeLabel setTextColor:[UIColor lightGrayColor]];
+        [self.m_schemeLabel setFont:[UIFont systemFontOfSize:14]];
+        self.m_schemeLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:self.m_schemeLabel];
+        
         self.m_verticalLine = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width - 0.5, 0, 0.5, frame.size.height)];
         [self.m_verticalLine setBackgroundColor:_lineColor];
         [self.contentView addSubview:self.m_verticalLine];
@@ -49,8 +57,10 @@
 }
 
 - (void)createUIWithItem:(HDAppListItem *)applistItem {
-    [self.m_imageView setImage:applistItem.iconImg];
+    _m_appListItem = applistItem;
+    [self.m_imageView setImage:applistItem.appIconImg];
     [self.m_titleLabel setText:applistItem.appName];
+    [self p_changeColor];
 }
 
 - (void)setLineWidth:(float)lineWidth {
@@ -87,10 +97,12 @@
     _iconImageWidth = iconImageWidth;
     CGRect frame = self.m_imageView.frame;
     
-    [self.m_imageView setFrame:CGRectMake((frame.size.width - iconImageWidth)/2, (frame.size.width - iconImageWidth)/2 - 15, _iconImageWidth, _iconImageWidth)];
+    [self.m_imageView setFrame:CGRectMake((frame.size.width - iconImageWidth)/2, (frame.size.width - iconImageWidth)/2 - 20, _iconImageWidth, _iconImageWidth)];
     self.m_imageView.layer.cornerRadius = iconImageWidth/2.0;
     
-    [self.m_titleLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_imageView.frame), frame.size.width, frame.size.height - CGRectGetMaxY(self.m_imageView.frame))];
+    [self.m_titleLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_imageView.frame), frame.size.width, 24)];
+    
+    [self.m_schemeLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_titleLabel.frame), frame.size.width, frame.size.height - CGRectGetMaxY(self.m_titleLabel.frame))];
 }
 
 - (void)setTitleColor:(UIColor *)titleColor {
@@ -103,4 +115,44 @@
     [self.m_titleLabel setFont:[UIFont systemFontOfSize:titleFontSize]];
 }
 
+- (void)setInstallTitleColor:(UIColor *)installTitleColor {
+    _installTitleColor = installTitleColor;
+    [self p_changeColor];
+}
+
+- (void)setUninstallTitleColor:(UIColor *)uninstallTitleColor {
+    _uninstallTitleColor = uninstallTitleColor;
+    [self p_changeColor];
+}
+
+- (void)setInstallTitleFontSize:(float)installTitleFontSize {
+    _installTitleFontSize = installTitleFontSize;
+    [self.m_schemeLabel setFont:[UIFont systemFontOfSize:installTitleFontSize]];
+}
+
+- (void)setInstallTipString:(NSString *)installTipString {
+    _installTipString = installTipString;
+    [self p_changeColor];
+}
+
+- (void)setUninstallTipString:(NSString *)uninstallTipString {
+    _uninstallTipString = uninstallTipString;
+    [self p_changeColor];
+}
+
+- (void)p_changeColor {
+    if (_m_appListItem.appScheme.length > 0) {
+        self.m_schemeLabel.hidden = NO;
+        NSString *schemeStr = [NSString stringWithFormat:@"%@://",_m_appListItem.appScheme];
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:schemeStr]]) {
+            [self.m_schemeLabel setTextColor:_installTitleColor];
+            [self.m_schemeLabel setText:_installTipString];
+        } else {
+            [self.m_schemeLabel setTextColor:_uninstallTitleColor];
+            [self.m_schemeLabel setText:_uninstallTipString];
+        }
+    } else {
+        self.m_schemeLabel.hidden = YES;
+    }
+}
 @end

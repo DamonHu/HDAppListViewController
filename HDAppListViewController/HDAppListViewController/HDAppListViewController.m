@@ -37,6 +37,11 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
         self.iconImageWidth = 80.0f;
         self.titleColor = [UIColor lightGrayColor];
         self.titleFontSize = 14.0f;
+        self.uninstallTitleColor = [UIColor redColor];
+        self.installTitleColor = [UIColor greenColor];
+        self.installTitleFontSize = 14.0f;
+        self.installTipString = @"已安装";
+        self.uninstallTipString = @"未安装";
     }
     return self;
 }
@@ -142,8 +147,13 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
     applistCollectionViewCell.lineColor = _lineColor;
     applistCollectionViewCell.lineWidth = _lineWidth;
     applistCollectionViewCell.titleColor = _titleColor;
+    applistCollectionViewCell.uninstallTitleColor = _uninstallTitleColor;
+    applistCollectionViewCell.installTitleColor = _installTitleColor;
+    applistCollectionViewCell.installTitleFontSize = _installTitleFontSize;
     applistCollectionViewCell.titleFontSize = _titleFontSize;
     applistCollectionViewCell.contentView.backgroundColor = _cellBackgroundColor;
+    applistCollectionViewCell.installTipString = _installTipString;
+    applistCollectionViewCell.uninstallTipString = _uninstallTipString;
     [applistCollectionViewCell createUIWithItem:applistItem];
     return applistCollectionViewCell;
 }

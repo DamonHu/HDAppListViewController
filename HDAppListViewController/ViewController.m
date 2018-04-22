@@ -45,7 +45,8 @@
     ///list
     HDAppListItem *item = [[HDAppListItem alloc] initWithAppID:@"1354861951" withAppName:@"懒猪计划" withAppIcon:[UIImage imageNamed:@"lanzhu"]];
     
-    HDAppListItem *item2 = [[HDAppListItem alloc] initWithAppID:@"1193575039" withAppName:@"蚂蚁工具箱" withAppIcon:[UIImage imageNamed:@"huaimayitool"]];
+    ///显示安装状态
+    HDAppListItem *item2 = [[HDAppListItem alloc] initWithAppID:@"1193575039" withAppName:@"蚂蚁工具箱" withAppIcon:[UIImage imageNamed:@"huaimayitool"] withScheme:@"huaimayilifeTool"];
     
     HDAppListItem *item3 = [[HDAppListItem alloc] initWithAppID:@"1178541464" withAppName:@"坏蚂蚁密码本" withAppIcon:[UIImage imageNamed:@"huaimayiwordbook"]];
    

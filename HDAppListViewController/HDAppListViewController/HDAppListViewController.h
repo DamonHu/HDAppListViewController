@@ -31,19 +31,29 @@ typedef void(^AppBannerClickCompleteHandler)(NSInteger index,HDBannerItem *banne
 ///icon图标的大小，默认为80
 @property (assign, nonatomic) float iconImageWidth;
 ///标题颜色,默认为浅灰色
-@property (strong,nonatomic) UIColor *titleColor;
+@property (strong, nonatomic) UIColor *titleColor;
 ///标题字体大小，默认为14
-@property (assign,nonatomic) float titleFontSize;
+@property (assign, nonatomic) float titleFontSize;
 ///是否显示分割线,默认为YES
 @property (assign, nonatomic) BOOL hasLine;
 ///分割线颜色,默认为浅灰色
-@property (strong,nonatomic) UIColor *lineColor;
+@property (strong, nonatomic) UIColor *lineColor;
 ///分割线的宽度，默认为0.5
-@property (assign,nonatomic) float lineWidth;
+@property (assign, nonatomic) float lineWidth;
+///没安装的显示文字颜色，默认为红色
+@property (strong, nonatomic) UIColor *uninstallTitleColor;
+///未安装的显示文字，默认为未安装
+@property (copy, nonatomic) NSString * uninstallTipString;
+///安装过的显示文字颜色，默认为绿色
+@property (strong, nonatomic) UIColor *installTitleColor;
+///安装过的显示文字，默认为已安装
+@property (copy, nonatomic) NSString * installTipString;
+///标题字体大小，默认为14
+@property (assign,nonatomic) float installTitleFontSize;
 ///点击list是否自动跳转到下载页，默认为YES
 @property (assign, nonatomic) BOOL autoDownload;
 
-///在List钟增加项目
+///在List钟增加项目，不显示安装状态
 - (void)addAppListItem:(HDAppListItem *)applistItem;
 
 ///增加banner的图片

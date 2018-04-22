@@ -32,6 +32,10 @@ HDAppListViewController *applistVC = [[HDAppListViewController alloc] init];
 HDAppListItem *item = [[HDAppListItem alloc] initWithAppID:@"1354861951" withAppName:@"懒猪计划" withAppIcon:[UIImage imageNamed:@"lanzhu"]];
 [applistVC addAppListItem:item];
 
+///添加显示安装状态的对象，需要设置对应的scheme，并且在info中设置LSApplicationQueriesSchemes中添加这里对应的scheme才可以检测软件安装状态
+HDAppListItem *item2 = [[HDAppListItem alloc] initWithAppID:@"1193575039" withAppName:@"蚂蚁工具箱" withAppIcon:[UIImage imageNamed:@"huaimayitool"] withScheme:@"huaimayilifeTool"];
+[applistVC addAppListItem:item2];
+
 //可以创建banner (可选，设置了会显示，不设置不显示)
 NSURL *fileURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"git" ofType:@"png"]];
 HDBannerItem *bannerItem = [[HDBannerItem alloc] initWithBannerImgURL:fileURL];
