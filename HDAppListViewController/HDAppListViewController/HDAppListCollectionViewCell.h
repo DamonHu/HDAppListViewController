@@ -16,6 +16,14 @@
 @property (assign, nonatomic) BOOL hasTopLine;
 ///分割线颜色,默认为浅灰色
 @property (strong,nonatomic) UIColor *lineColor;
+///分割线的宽度
+@property (assign,nonatomic) float lineWidth;
+///icon图标的大小，默认为80
+@property (assign, nonatomic) float iconImageWidth;
+///标题颜色,默认为浅灰色
+@property (strong,nonatomic) UIColor *titleColor;
+///标题字体大小，默认为14
+@property (assign,nonatomic) float titleFontSize;
 
 - (void)createUIWithItem:(HDAppListItem *)applistItem;
 @end

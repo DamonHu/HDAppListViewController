@@ -26,12 +26,17 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
         self.m_appListItemArray = [NSMutableArray array];
         self.m_appBannerItemArray = [NSMutableArray array];
         self.autoDownload = YES;
         self.hasLine = YES;
         self.lineColor = [UIColor lightGrayColor];
+        self.lineWidth = 0.5f;
         self.bannerDistance = 20.0f;
+        self.iconImageWidth = 80.0f;
+        self.titleColor = [UIColor lightGrayColor];
+        self.titleFontSize = 14.0f;
     }
     return self;
 }
@@ -133,7 +138,11 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
     } else{
         applistCollectionViewCell.hasTopLine = NO;
     }
+    applistCollectionViewCell.iconImageWidth = _iconImageWidth;
     applistCollectionViewCell.lineColor = _lineColor;
+    applistCollectionViewCell.lineWidth = _lineWidth;
+    applistCollectionViewCell.titleColor = _titleColor;
+    applistCollectionViewCell.titleFontSize = _titleFontSize;
     applistCollectionViewCell.contentView.backgroundColor = _cellBackgroundColor;
     [applistCollectionViewCell createUIWithItem:applistItem];
     return applistCollectionViewCell;
