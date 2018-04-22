@@ -31,6 +31,7 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
         self.autoDownload = YES;
         self.hasLine = YES;
         self.lineColor = [UIColor lightGrayColor];
+        self.bannerDistance = 20.0f;
     }
     return self;
 }
@@ -83,7 +84,7 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
     flowLayout.itemSize = CGSizeMake(screenSize.width/3.0, screenSize.width/3.0);
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, height+20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - height - 22) collectionViewLayout:flowLayout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, height + self.bannerDistance, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - height - self.bannerDistance - 2) collectionViewLayout:flowLayout];
     collectionView.backgroundColor = _listBackgroundColor;
     collectionView.delegate = self;
     collectionView.dataSource = self;

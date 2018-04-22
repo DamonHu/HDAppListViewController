@@ -26,6 +26,8 @@ typedef void(^AppBannerClickCompleteHandler)(NSInteger index,HDBannerItem *banne
 @property (strong, nonatomic) UIColor *listBackgroundColor;
 ///每个cell的背景色
 @property (strong, nonatomic) UIColor *cellBackgroundColor;
+///banner和list的间距，默认为20
+@property (assign, nonatomic) float bannerDistance;
 ///是否显示分割线,默认为YES
 @property (assign, nonatomic) BOOL hasLine;
 ///分割线颜色,默认为浅灰色
