@@ -69,10 +69,20 @@ applistVC.appBannerClickCompleteHandler = ^(NSInteger index, HDBannerItem *banne
 @property (strong, nonatomic) UIColor *listBackgroundColor;
 ///每个cell的背景色
 @property (strong, nonatomic) UIColor *cellBackgroundColor;
+///banner和list的间距，默认为20
+@property (assign, nonatomic) float bannerDistance;
+///icon图标的大小，默认为80
+@property (assign, nonatomic) float iconImageWidth;
+///标题颜色,默认为浅灰色
+@property (strong,nonatomic) UIColor *titleColor;
+///标题字体大小，默认为14
+@property (assign,nonatomic) float titleFontSize;
 ///是否显示分割线,默认为YES
 @property (assign, nonatomic) BOOL hasLine;
 ///分割线颜色,默认为浅灰色
 @property (strong,nonatomic) UIColor *lineColor;
+///分割线的宽度，默认为0.5
+@property (assign,nonatomic) float lineWidth;
 ///点击list是否自动跳转到下载页，默认为YES
 @property (assign, nonatomic) BOOL autoDownload;
 ```
