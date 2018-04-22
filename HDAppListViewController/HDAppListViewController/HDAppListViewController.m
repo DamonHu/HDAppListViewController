@@ -73,7 +73,7 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
             [imageUrlArray addObject:item.bannerImgURL];
             
         }
-        LCBannerView *bannerView = [[LCBannerView alloc] initWithFrame:CGRectMake(0, 20.0f, [UIScreen mainScreen].bounds.size.width, 200.0f) delegate:self imageURLs:imageUrlArray placeholderImageName:@"" timeInterval:3.0f currentPageIndicatorTintColor:[UIColor orangeColor] pageIndicatorTintColor:[UIColor whiteColor]];
+        LCBannerView *bannerView = [[LCBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200.0f) delegate:self imageURLs:imageUrlArray placeholderImageName:@"" timeInterval:3.0f currentPageIndicatorTintColor:[UIColor orangeColor] pageIndicatorTintColor:[UIColor whiteColor]];
         [self.view addSubview:bannerView];
         height += 200;
     }
@@ -83,7 +83,7 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
     flowLayout.itemSize = CGSizeMake(screenSize.width/3.0, screenSize.width/3.0);
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, height+60, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - height - 62) collectionViewLayout:flowLayout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, height+20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height - height - 22) collectionViewLayout:flowLayout];
     collectionView.backgroundColor = _listBackgroundColor;
     collectionView.delegate = self;
     collectionView.dataSource = self;
