@@ -94,7 +94,7 @@ applistVC.appBannerClickCompleteHandler = ^(NSInteger index, HDBannerItem *banne
 ## 三、效果演示
 
 ![](./demo.gif)
-
+![](./Simulator Screen Shot - iPhone 8 Plus - 2018-04-22 at 20.40.25.png)
 
 ## 四、其他 Other
 
