@@ -39,7 +39,7 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
         self.titleFontSize = 14.0f;
         self.uninstallTitleColor = [UIColor redColor];
         self.installTitleColor = [UIColor greenColor];
-        self.installTitleFontSize = 14.0f;
+        self.installTitleFontSize = 12.0f;
         self.installTipString = @"已安装";
         self.uninstallTipString = @"未安装";
     }
@@ -114,8 +114,16 @@ static NSString *const HDAppListCollectionViewCellReuseIdentifier = @"HDAppListC
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     HDAppListItem *applistItem = [_m_appListItemArray objectAtIndex:indexPath.item];
-    if (_autoDownload && applistItem.appID.length > 0) {
-        NSURL *downloadURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%@",applistItem.appID]];
+    if (_autoDownload) {
+        NSURL *downloadURL;
+        if (applistItem.appScheme.length > 0) {
+            downloadURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@://",applistItem.appScheme]];
+            if (![[UIApplication sharedApplication] canOpenURL:downloadURL]) {
+               downloadURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%@",applistItem.appID]];
+            }
+        } else if (applistItem.appID.length > 0) {
+            downloadURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%@",applistItem.appID]];
+        }
         if (@available(iOS 10.0, *)) {
             [[UIApplication sharedApplication] openURL:downloadURL options:[NSDictionary dictionary] completionHandler:nil];
         } else {

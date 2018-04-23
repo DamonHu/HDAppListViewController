@@ -48,7 +48,7 @@ typedef void(^AppBannerClickCompleteHandler)(NSInteger index,HDBannerItem *banne
 @property (strong, nonatomic) UIColor *installTitleColor;
 ///安装过的显示文字，默认为已安装
 @property (copy, nonatomic) NSString * installTipString;
-///标题字体大小，默认为14
+///标题字体大小，默认为12
 @property (assign,nonatomic) float installTitleFontSize;
 ///点击list是否自动跳转到下载页，默认为YES
 @property (assign, nonatomic) BOOL autoDownload;

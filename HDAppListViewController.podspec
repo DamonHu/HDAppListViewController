@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'HDAppListViewController'
-s.version = '1.0.4'
+s.version = '1.0.5'
 s.license= { :type => "MIT", :file => "LICENSE" }
 s.summary = 'HDAppListViewController，可以快速设置app的列表，点击即可跳转到appstore的下载页面'
 s.homepage = 'https://github.com/DamonHu/HDAppListViewController'

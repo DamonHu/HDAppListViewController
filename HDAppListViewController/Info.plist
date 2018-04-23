@@ -4,6 +4,7 @@
 <dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>huaimayilifeTool</string>
 		<string>mqq</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>

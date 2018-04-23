@@ -36,7 +36,7 @@
         
         self.m_schemeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.m_imageView.frame.origin.y + _iconImageWidth, frame.size.width, frame.size.height - _iconImageWidth)];
         [self.m_schemeLabel setTextColor:[UIColor lightGrayColor]];
-        [self.m_schemeLabel setFont:[UIFont systemFontOfSize:14]];
+        [self.m_schemeLabel setFont:[UIFont systemFontOfSize:12]];
         self.m_schemeLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:self.m_schemeLabel];
         
@@ -97,10 +97,10 @@
     _iconImageWidth = iconImageWidth;
     CGRect frame = self.m_imageView.frame;
     
-    [self.m_imageView setFrame:CGRectMake((frame.size.width - iconImageWidth)/2, (frame.size.width - iconImageWidth)/2 - 20, _iconImageWidth, _iconImageWidth)];
+    [self.m_imageView setFrame:CGRectMake((frame.size.width - iconImageWidth)/2, (frame.size.width - iconImageWidth)/2 - 15, _iconImageWidth, _iconImageWidth)];
     self.m_imageView.layer.cornerRadius = iconImageWidth/2.0;
     
-    [self.m_titleLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_imageView.frame), frame.size.width, 24)];
+    [self.m_titleLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_imageView.frame)+3, frame.size.width, 22)];
     
     [self.m_schemeLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_titleLabel.frame), frame.size.width, frame.size.height - CGRectGetMaxY(self.m_titleLabel.frame))];
 }
@@ -141,6 +141,7 @@
 }
 
 - (void)p_changeColor {
+    CGRect frame = self.contentView.frame;
     if (_m_appListItem.appScheme.length > 0) {
         self.m_schemeLabel.hidden = NO;
         NSString *schemeStr = [NSString stringWithFormat:@"%@://",_m_appListItem.appScheme];
@@ -151,8 +152,11 @@
             [self.m_schemeLabel setTextColor:_uninstallTitleColor];
             [self.m_schemeLabel setText:_uninstallTipString];
         }
+        [self.m_titleLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_imageView.frame)+3, frame.size.width, 22)];
+        [self.m_schemeLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_titleLabel.frame), frame.size.width, frame.size.height - CGRectGetMaxY(self.m_titleLabel.frame))];
     } else {
         self.m_schemeLabel.hidden = YES;
+        [self.m_titleLabel setFrame:CGRectMake(0, CGRectGetMaxY(self.m_imageView.frame), frame.size.width, frame.size.height - CGRectGetMaxY(self.m_imageView.frame))];
     }
 }
 @end
